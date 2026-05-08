@@ -12,6 +12,12 @@ const Logo = ({ size = 32 }) => (
 )
 
 // ── Screen 1 — Instructions ──────────────────────────────────────
+const FooterCredit = () => (
+  <div className="center-shell-foot">
+    Made by <a href="http://linkedin.com/in/kiranvaidya" target="_blank" rel="noreferrer" style={{ color: 'var(--accent)' }}>Kiran</a> with <span style={{ color: 'var(--danger)' }}>♥</span> in Canada
+  </div>
+)
+
 export function InstructionsScreen({ onContinue }) {
   return (
     <div className="center-shell">
@@ -89,21 +95,16 @@ export function InstructionsScreen({ onContinue }) {
             <button className="btn btn-primary btn-lg" onClick={onContinue}>
               I have my CSV files <Icon name="check" size={14} />
             </button>
-            <button className="btn btn-ghost btn-lg" onClick={onContinue}>
-              Continue setup anyway
-            </button>
           </div>
         </div>
       </div>
-      <div className="center-shell-foot">
-        Made with <span style={{ color: 'var(--danger)' }}>♥</span> in Canada
-      </div>
+      <FooterCredit />
     </div>
   )
 }
 
 // ── Screen 2 — Login choice ──────────────────────────────────────
-export function LoginChoiceScreen({ onChoose }) {
+export function LoginChoiceScreen({ onChoose, onBack }) {
   const [pick, setPick] = useState(null)
   const [user, setUser] = useState('')
   const [pwd, setPwd] = useState('')
@@ -147,6 +148,9 @@ export function LoginChoiceScreen({ onChoose }) {
           )}
 
           <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
+            <button className="btn btn-ghost btn-lg" onClick={onBack}>
+              ← Back
+            </button>
             <button
               className="btn btn-primary btn-lg"
               disabled={!pick || (pick === 'account' && (!user || !pwd))}
@@ -158,9 +162,7 @@ export function LoginChoiceScreen({ onChoose }) {
           </div>
         </div>
       </div>
-      <div className="center-shell-foot">
-        Made with <span style={{ color: 'var(--danger)' }}>♥</span> in Canada
-      </div>
+      <FooterCredit />
     </div>
   )
 }
@@ -204,7 +206,7 @@ function Dropzone({ required, file, onFile, children }) {
   )
 }
 
-export function ImportScreen({ onImported }) {
+export function ImportScreen({ onImported, onBack }) {
   const [conn, setConn] = useState(null)
   const [endo, setEndo] = useState(null)
   const [rec, setRec] = useState(null)
@@ -282,6 +284,9 @@ export function ImportScreen({ onImported }) {
           </div>
 
           <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+            <button className="btn btn-ghost btn-lg" onClick={onBack}>
+              ← Back
+            </button>
             <button className="btn btn-primary btn-lg" disabled={!conn} onClick={handleImport}
               style={{ opacity: conn ? 1 : 0.5 }}>
               Build my network intelligence <Icon name="check" size={14} />
@@ -295,9 +300,7 @@ export function ImportScreen({ onImported }) {
           </div>
         </div>
       </div>
-      <div className="center-shell-foot">
-        Made with <span style={{ color: 'var(--danger)' }}>♥</span> in Canada
-      </div>
+      <FooterCredit />
     </div>
   )
 }

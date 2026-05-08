@@ -230,7 +230,9 @@ export function DiscoveryScreen({ records, index, agg, annotations, setAnnotatio
           ))}
         </div>
         <div className="filter-group">
-          <h4>Seniority</h4>
+          <h4 style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+            <span style={{ fontSize: 13 }}>🏗️</span> Seniority
+          </h4>
           {ROLE_RULES.map((r) => (
             <label key={r.key} className="filter-checkbox">
               <input type="checkbox" checked={roles.has(r.key)} onChange={() => toggle(roles, r.key, setRoles)} />

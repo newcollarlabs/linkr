@@ -26,9 +26,9 @@ function AppFooter() {
   return (
     <footer className="app-footer">
       <div className="footer-inner">
-        <span>Made with <span className="heart">♥</span> in Canada · Linkr is local-first · nothing leaves your browser</span>
+        <span>Made by <a className="footer-link" href="http://linkedin.com/in/kiranvaidya" target="_blank" rel="noreferrer">Kiran</a> with <span className="heart">♥</span> in Canada · Linkr is local-first · nothing leaves your browser</span>
         <span className="footer-spacer" />
-        <a className="footer-link coffee-link" href="https://buymeacoffee.com" target="_blank" rel="noreferrer">
+        <a className="footer-link coffee-link" href="https://buymeacoffee.com/kiranvaidya" target="_blank" rel="noreferrer">
           <Icon name="coffee" size={13} /> Buy me a coffee
         </a>
         <button className="footer-link" onClick={() => setOpen(open === 'sol' ? null : 'sol')}>
@@ -140,8 +140,8 @@ export default function App() {
   }
 
   if (stage === 'instructions') return <InstructionsScreen onContinue={() => setStage('login')} />
-  if (stage === 'login') return <LoginChoiceScreen onChoose={(m) => { setAuthMode(m); setStage('import') }} />
-  if (stage === 'import' || (stage === 'app' && records.length === 0)) return <ImportScreen onImported={handleImported} />
+  if (stage === 'login') return <LoginChoiceScreen onChoose={(m) => { setAuthMode(m); setStage('import') }} onBack={() => setStage('instructions')} />
+  if (stage === 'import' || (stage === 'app' && records.length === 0)) return <ImportScreen onImported={handleImported} onBack={() => setStage('login')} />
 
   const navItems = [
     { key: 'dashboard',     label: 'Network Pulse', icon: 'home',   count: agg?.total },
